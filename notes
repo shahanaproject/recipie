@@ -1,0 +1,46 @@
+1. Create Receipes Folder
+2. Open that folder in VS code and in terminal enter this
+   npm create vite@latest . -- --template react
+   and install it
+   ➜ Local: http://localhost:5173/ choose this option
+   Then run this
+   npm install react-router-dom tailwindcss @tailwindcss/vite
+   Then open open vite.config.js this file
+
+Replace everything inside with this
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+plugins: [react(), tailwindcss()],
+})
+
+Then Open src/index.css
+
+Delete everything and put:
+
+@import "tailwindcss";
+
+Every time you work on the project
+
+Open the terminal inside your project folder:
+
+cd Receipes
+npm run dev
+
+You'll see something like:
+
+VITE v8.x.x ready
+
+Local:
+http://localhost:5173/
+
+Open:
+
+http://localhost:5173/
+
+That's your app.
+
+[src/services/recipeApi.js](C:/Users/user/OneDrive/Documents/Receipes/src/services/recipeApi.js):
+const API_KEY = import.meta.env.VITE_THEMEALDB_API_KEY || '1

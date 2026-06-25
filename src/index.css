@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    font-family: 'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at top, rgba(255, 223, 244, 0.9), transparent 30%),
+      linear-gradient(180deg, #fff6fb 0%, #eef7ff 40%, #fffaf0 100%);
+    color: #334155;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .app-screen {
+    @apply flex min-h-screen items-center justify-center p-3 sm:p-5;
+  }
+
+  .phone-shell {
+    @apply relative min-h-[100dvh] w-full max-w-[420px] overflow-hidden rounded-none border border-white/70 shadow-[0_24px_70px_rgba(250,168,212,0.25)] sm:min-h-[860px] sm:rounded-[40px];
+  }
+
+  .soft-card {
+    @apply rounded-[28px] border border-white/75 bg-white/88 shadow-[0_18px_40px_rgba(148,163,184,0.14)] backdrop-blur-xl;
+  }
+
+  .icon-bubble {
+    @apply flex h-11 w-11 items-center justify-center rounded-full bg-white/80 text-lg shadow-[0_10px_22px_rgba(148,163,184,0.18)];
+  }
+
+  .input-field {
+    @apply h-13 w-full rounded-[18px] border border-slate-200 bg-white/90 px-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-pink-300 focus:ring-4 focus:ring-pink-100;
+  }
+
+  .textarea-field {
+    @apply w-full rounded-[20px] border border-slate-200 bg-white/90 px-4 py-3 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-pink-300 focus:ring-4 focus:ring-pink-100;
+    resize: vertical;
+  }
+
+  .primary-button {
+    @apply flex min-h-12 w-full items-center justify-center rounded-[18px] border-0 bg-[linear-gradient(135deg,#4ade80,#22c55e)] px-5 py-3 text-sm font-extrabold text-white shadow-[0_16px_26px_rgba(74,222,128,0.28)] transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-70;
+  }
+
+  .secondary-button {
+    @apply flex min-h-12 w-full items-center justify-center rounded-[18px] border border-amber-200 bg-amber-50 px-5 py-3 text-sm font-extrabold text-amber-700 shadow-[0_10px_20px_rgba(251,191,36,0.15)] transition hover:bg-amber-100;
+  }
+
+  .search-button {
+    @apply flex h-13 w-13 shrink-0 items-center justify-center rounded-[18px] bg-[linear-gradient(135deg,#fb7185,#f472b6)] text-xl text-white shadow-[0_14px_24px_rgba(251,113,133,0.26)] transition hover:scale-[1.02] disabled:opacity-70;
+  }
+
+  .nav-item {
+    @apply flex min-h-18 flex-col items-center justify-center gap-1 rounded-[24px] px-1 text-center text-[10px] font-extrabold transition;
+  }
+
+  .nav-item-active {
+    @apply bg-[linear-gradient(180deg,#f8dff2,#f7e6ff)] text-pink-500 shadow-[0_16px_26px_rgba(244,114,182,0.16)];
+  }
+
+  .nav-item-idle {
+    @apply text-slate-500 hover:bg-slate-50;
+  }
+
+  .mini-action-button {
+    @apply rounded-full px-4 py-2 text-xs font-extrabold transition hover:brightness-95;
+  }
+
+  .form-group {
+    @apply flex flex-col gap-2;
+  }
+
+  .form-label {
+    @apply text-sm font-extrabold text-slate-700;
+  }
+
+  .form-error {
+    @apply text-xs font-bold text-rose-500;
+  }
+
+  .form-meta {
+    @apply flex items-center justify-between text-xs font-semibold text-slate-400;
+  }
+
+  .section-title {
+    @apply mb-2 text-lg font-black text-slate-800;
+  }
+
+  .meta-pill {
+    @apply rounded-full bg-pink-50 px-3 py-2 text-sm font-semibold text-slate-600;
+  }
+
+  .upload-panel {
+    @apply flex h-36 w-full items-center justify-center overflow-hidden rounded-[24px] border border-dashed border-slate-300 bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)];
+  }
+
+  .favorite-cta {
+    @apply flex min-h-12 items-center justify-center rounded-[18px] px-5 text-sm font-extrabold transition;
+  }
+
+  .favorite-cta-active {
+    @apply bg-pink-500 text-white shadow-[0_16px_26px_rgba(244,114,182,0.25)];
+  }
+
+  .favorite-cta-idle {
+    @apply border border-pink-200 bg-pink-50 text-pink-600;
+  }
+
+  .menu-tile {
+    @apply flex w-full items-center gap-4 rounded-[28px] border border-white/80 bg-white/92 px-4 py-4 text-left shadow-[0_18px_40px_rgba(148,163,184,0.14)] backdrop-blur-xl transition hover:translate-y-[-1px];
+  }
+
+  .menu-tile-icon {
+    @apply flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe0f0,#e2f0ff)] text-2xl shadow-[0_12px_24px_rgba(148,163,184,0.16)];
+  }
+
+  .cloud {
+    @apply absolute rounded-full bg-white/75 blur-sm;
+  }
+
+  .cloud::before,
+  .cloud::after {
+    content: '';
+    @apply absolute rounded-full bg-white/75;
+  }
+
+  .cloud-one {
+    top: 70px;
+    left: 40px;
+    height: 48px;
+    width: 112px;
+  }
+
+  .cloud-one::before {
+    top: -14px;
+    left: 20px;
+    height: 44px;
+    width: 44px;
+  }
+
+  .cloud-one::after {
+    top: -9px;
+    right: 14px;
+    height: 36px;
+    width: 36px;
+  }
+
+  .cloud-two {
+    top: 120px;
+    right: 32px;
+    height: 42px;
+    width: 96px;
+  }
+
+  .cloud-two::before {
+    top: -10px;
+    left: 18px;
+    height: 36px;
+    width: 36px;
+  }
+
+  .cloud-two::after {
+    top: -6px;
+    right: 16px;
+    height: 28px;
+    width: 28px;
+  }
+
+  .cloud-three {
+    top: 210px;
+    left: -14px;
+    height: 36px;
+    width: 84px;
+  }
+
+  .cloud-three::before {
+    top: -12px;
+    left: 22px;
+    height: 34px;
+    width: 34px;
+  }
+
+  .cloud-three::after {
+    top: -4px;
+    right: 12px;
+    height: 24px;
+    width: 24px;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .loading-progress {
+    width: 70%;
+    animation: loading-slide 1.8s ease-in-out infinite;
+  }
+}
+
+@keyframes loading-slide {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  50% {
+    transform: translateX(25%);
+  }
+
+  100% {
+    transform: translateX(60%);
+  }
+}
