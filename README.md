@@ -1,3 +1,6 @@
+Live link at vercel recipie-nu.vercel.app
+
+
 # Recipes Only
 
 A cute mobile-first recipe web app built as a frontend project using React and Vite.
